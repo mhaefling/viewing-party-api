@@ -2,7 +2,7 @@ class MovieSerializer
 
   def self.format_movies(movies)
     { data: 
-    movies[:results].map do |movie|
+    movies.map do |movie|
       {
         id: movie[:id].to_s,
         type: "movie",
@@ -11,7 +11,10 @@ class MovieSerializer
           vote_average: movie[:vote_average]
         }
       }
-    end
+    end,
+      meta: {
+        count: movies.count
+      }
     }
   end
 end
