@@ -16,6 +16,10 @@ class MovieGateway
     conn.get("https://api.themoviedb.org/3/discover/movie?vote_average.gte=#{average}")
   end
 
+  def self.movie_run_time(movie_id)
+    JSON.parse(conn.get("https://api.themoviedb.org/3/movie/#{movie_id}").body, symbolize_names: true)[:runtime]
+  end
+
   private
 
   def self.conn

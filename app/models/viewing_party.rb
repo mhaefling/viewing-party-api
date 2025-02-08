@@ -18,4 +18,16 @@ class ViewingParty < ApplicationRecord
 
       return new_party
   end
+
+  def self.check_viewing_times(movie_details)
+    if movie_details[:movie_id] != nil
+      movie_runtime = MovieGateway.movie_run_time(movie_details[:movie_id])
+      start_time = movie_details[:start_time][11..-4].delete":"
+      end_time = movie_details[:end_time][11..-4].delete":"
+      party_length = end_time.to_i - start_time.to_i
+      if party_length < movie_runtime
+        raise StandardError, "Party length has to be longer than movies run time"
+      end
+    end
+  end
 end

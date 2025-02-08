@@ -2,6 +2,7 @@ class Api::V1::ViewingPartiesController < ApplicationController
 
   def create
     if User.validate_all_users(params[:user_id], params[:invitees])
+      ViewingParty.check_viewing_times(viewing_party_params)
       new_viewing_party = ViewingParty.create_party(params[:user_id], params[:invitees], viewing_party_params)
       render json: ViewingPartySerializer.format_viewing_party(new_viewing_party)
     end
