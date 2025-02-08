@@ -8,6 +8,15 @@ class ViewingParty < ApplicationRecord
   has_many :user_viewings
   has_many :users, through: :user_viewings
 
+  def self.validate_invitees(invitees)
+    valid_invitees = [] 
+    invitees.each do |invitee|
+      if User.find_by(id: invitee)
+        valid_invitees << invitee
+      end
+    end
+    return valid_invitees
+  end
 
   def self.create_party(host_user, invitees, party_details)
       host = User.find(host_user)
