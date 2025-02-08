@@ -8,5 +8,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:password) }
     it { should have_secure_password }
     it { should have_secure_token(:api_key) }
+    it { should have_many :user_viewings }
+    it { should have_many(:viewing_parties).through(:user_viewings) }
   end
 end

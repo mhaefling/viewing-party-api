@@ -24,19 +24,30 @@ class MovieGateway
     end
   end
 
-  def self.filter(search_params)
-    if search_params.include?(:filter) && search_params[:filter] == "top rated"
-      parse_json(top_rated)
-    elsif search_params.include?(:title)
-      parse_json(search_title(search_params[:title]))
-    elsif search_params.include?(:average_votes)
-      parse_json(search_votes(search_params[:average_votes]))
-    else
-      parse_json(now_playing)
-    end
-  end
-
   def self.parse_json(response)
     JSON.parse(response.body, symbolize_names: true)[:results]
   end
+
+  def self.filter(search_params)
+
+    if search_params.include?(:filter) && search_params[:filter] == "top rated"
+      create_movie_poro(parse_json(top_rated))
+
+    elsif search_params.include?(:title)
+      create_movie_poro(parse_json(search_title(search_params[:title])))
+
+    elsif search_params.include?(:average_votes)
+      create_movie_poro(parse_json(search_votes(search_params[:average_votes])))
+
+    else
+      create_movie_poro(parse_json(now_playing))
+    end
+  end
+
+  def self.create_movie_poro(movies)
+    movies.map do |movie|
+      Movie.new(movie)
+    end
+  end
+
 end
