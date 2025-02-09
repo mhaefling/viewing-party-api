@@ -10,7 +10,8 @@ class Api::V1::ViewingPartiesController < ApplicationController
 
   def update
     if User.find(params[:user_id])
-      
+      UserViewing.create_invitee_viewings([params[:invitees_user_id]], ViewingParty.find(params[:id]))
+      render json: ViewingPartySerializer.format_viewing_party(ViewingParty.find(params[:id]))
     end
   end
 

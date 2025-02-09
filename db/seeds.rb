@@ -10,3 +10,7 @@
 User.create!(name: "Danny DeVito", username: "danny_de_v", password: "jerseyMikesRox7")
 User.create!(name: "Dolly Parton", username: "dollyP", password: "Jolene123")
 User.create!(name: "Lionel Messi", username: "futbol_geek", password: "test123")
+User.create!(name: "Matt Haefling", username: "mhaefling", password: "banana")
+User.create!(name: "Jono Sommers", username: "jsommers", password: "pizza")
+User.create!(name: "Natasha", username: "natashaunwell", password: "sickasadog")
+User.create!(name: "Joe Haefling", username: "jhaefling", password: "wutang")
