@@ -8,8 +8,8 @@ class ViewingPartySerializer
       type: "viewing_party",
       attributes: {
         name: viewing_party.name,
-        start_time: viewing_party.start_time,
-        end_time: viewing_party.end_time,
+        start_time: viewing_party.start_time.strftime("%Y-%m-%d %H:%M:%S"),
+        end_time: viewing_party.end_time.strftime("%Y-%m-%d %H:%M:%S"),
         movie_id: viewing_party.movie_id,
         movie_title: viewing_party.movie_title,
         invitees:
