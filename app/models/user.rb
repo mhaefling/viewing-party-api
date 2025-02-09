@@ -7,7 +7,13 @@ class User < ApplicationRecord
   has_many :user_viewings
   has_many :viewing_parties, through: :user_viewings
 
-  def self.validate_host(host)
-    find(host)
+  def self.validate_invitees(invitees)
+    valid_invitees = [] 
+    invitees.each do |invitee|
+      if User.find_by(id: invitee)
+        valid_invitees << invitee
+      end
+    end
+    return valid_invitees
   end
 end

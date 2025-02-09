@@ -10,4 +10,10 @@ class UserViewing < ApplicationRecord
   def mark_host
     self.host = viewing_party.user_viewings.empty?
   end
+
+  def self.create_invitee_viewings(invitees, new_party)
+    invitees.each do |invitee|
+      create!(user: User.find(invitee), viewing_party: new_party)
+    end
+  end
 end

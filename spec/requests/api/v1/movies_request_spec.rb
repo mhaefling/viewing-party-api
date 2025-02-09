@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Movies Endpoint" do
+RSpec.describe "Movies Endpoint", type: :request do
   describe "happy path" do
     it "can retrieve a list of movies currently playing in theaters", :vcr do
       get "/api/v1/movies"

@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Users API", type: :request do
+
+  before(:each) do
+    User.destroy_all
+  end
+
   describe "Create User Endpoint" do
     let(:user_params) do
       {
