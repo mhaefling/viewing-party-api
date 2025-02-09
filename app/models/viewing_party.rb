@@ -8,14 +8,9 @@ class ViewingParty < ApplicationRecord
   has_many :user_viewings
   has_many :users, through: :user_viewings
 
-  def self.create_party(host_user, invitees, party_details)
-      host = User.find(host_user)
+  def self.create_party(host, invitees, party_details)
       new_party = host.viewing_parties.create!(party_details)
-
-      invitees.each do |invitee|
-        UserViewing.create!(user: User.find(invitee), viewing_party: new_party)
-      end
-
+      UserViewing.create_invitee_viewings(invitees, new_party)
       return new_party
   end
 

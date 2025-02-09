@@ -16,13 +16,6 @@ RSpec.describe User, type: :model do
   end
 
   describe "class methods" do
-    describe "validate_user" do
-      it 'confirms that the user_id provided is valid' do
-        beth_haefling = User.create!(name: "Beth Haefling", username: "bhaefling", password: "icecream")
-        expect(User.validate_user(beth_haefling.id)).to be_an_instance_of(User)
-      end
-    end
-
     describe "validate_invitees" do
       it "validate_invitees - returns an array of valid invitee id's from a list of invitee id's" do
         phyllis_haefling = User.create!(name: "Phyllis Haefling", username: "phaefling", password: "scrapple")

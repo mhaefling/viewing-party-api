@@ -36,7 +36,7 @@ RSpec.describe ViewingParty, type: :model do
     describe "#create_party" do
       it "creates the party for the host and sets up user viewings for the invitees" do
 
-        new_party = ViewingParty.create_party(@matt_haefling.id, @invitees, @party_details)
+        new_party = ViewingParty.create_party(@matt_haefling, @invitees, @party_details)
 
         expect(new_party).to be_persisted
         expect(new_party.name).to eq("Model Test Party")
