@@ -48,7 +48,6 @@ RSpec.describe "Movie Gateway" do
 
     it "calls themoviedb to get run time of a specific movie by id", :vcr do
       expect(MovieGateway.movie_run_time(278)).to eq(142)
-      
     end
 
     it "calls themoviedb to search movies by average votes", :vcr do

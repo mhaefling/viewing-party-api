@@ -8,6 +8,12 @@ class Api::V1::ViewingPartiesController < ApplicationController
     end
   end
 
+  def update
+    if User.find(params[:user_id])
+      
+    end
+  end
+
   private
 
   def viewing_party_params
