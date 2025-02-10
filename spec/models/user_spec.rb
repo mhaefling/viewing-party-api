@@ -17,12 +17,12 @@ RSpec.describe User, type: :model do
 
   describe "class methods" do
     describe "validate_invitees" do
-      it "validate_invitees - returns an array of valid invitee id's from a list of invitee id's" do
+      it "returns an array of valid invitee id's from an array of invitee id's" do
         phyllis_haefling = User.create!(name: "Phyllis Haefling", username: "phaefling", password: "scrapple")
         steve_haefling = User.create!(name: "Steve Haefling", username: "shaefling", password: "moonshine")
         deloras_haefling = User.create!(name: "Deloras Haefling", username: "dhaefling", password: "icecream")
 
-        invitees = [phyllis_haefling.id, steve_haefling.id, deloras_haefling.id, 40]
+        invitees = [phyllis_haefling.id, steve_haefling.id, deloras_haefling.id, 40, 500, 6000, 70000]
 
         expect(User.validate_invitees(invitees)).to eq([phyllis_haefling.id, steve_haefling.id, deloras_haefling.id])
       end
