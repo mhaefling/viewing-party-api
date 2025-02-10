@@ -4,22 +4,52 @@ class Movie
               :vote_average,
               :release_year,
               :runtime,
-              :generes,
+              :genres,
               :summary,
               :cast_members,
               :total_reviews,
-              :review
+              :reviews
 
   def initialize(movie)
     @id = movie[:id]
     @title = movie[:original_title]
-    @vote_average = movie[:vote_average]
     @release_year = movie[:release_date][0..3].to_i
-    @runtime = movie[:runtime] #This will need to be updated based on 2nd EP's JSON key
-    @generes = movie[:genre_ids] ##This will need to be updated based on 2nd EP's JSON key
+    @vote_average = movie[:vote_average]
+    @runtime = movie[:runtime]
+    @genres = movie[:genres]
     @summary = movie[:overview]
-    @cast_members = movie[:cast_members] ##This will need to be updated based on 2nd EP's JSON key
-    @total_reviews = movie[:vote_count] ##This will need to be updated based on 2nd EP's JSON key
-    @review = movie[:reviews] ##This will need to be updated based on 2nd EP's JSON key
+    @cast_members = movie[:cast]
+    @total_reviews = movie[:total_reviews]
+    @reviews = movie[:reviews]
+  end
+
+  def display_genres(movie_genres)
+    genres = []
+    movie_genres.each do |genre|
+      genres << genre[:name]
+    end
+    return genres
+  end
+
+  def display_cast(movie_cast)
+    cast = [] 
+    movie_cast.each do |member|
+      cast << { character: member[:character], actor: member[:name]}
+    end
+    return cast[0..9]
+  end
+
+  def display_reviews(review_data)
+    reviews = []
+    review_data.each do |review|
+      reviews << { author: review[:author], review: review[:content] }
+    end
+    return reviews[0..4]
+  end
+
+  def display_runtime(runtime)
+    hours = runtime / 60
+    minutes = runtime % 60
+    return "#{hours} hours, #{minutes} minutes"
   end
 end

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         resources :viewing_parties, only: [:create, :update]
       end
       resources :sessions, only: :create
-      resources :movies, only: :index
+      resources :movies, only: [:index, :show]
     end
   end
 end
