@@ -2,10 +2,6 @@ require "rails_helper"
 
 RSpec.describe "Users API", type: :request do
 
-  before(:each) do
-    User.destroy_all
-  end
-
   describe "Create User Endpoint" do
     let(:user_params) do
       {
@@ -90,6 +86,70 @@ RSpec.describe "Users API", type: :request do
       expect(json[:data][0][:attributes]).to_not have_key(:password)
       expect(json[:data][0][:attributes]).to_not have_key(:password_digest)
       expect(json[:data][0][:attributes]).to_not have_key(:api_key)
+    end
+  end
+
+  describe "Get User Profile Details" do
+    it "Display detailed User profile with Hosted Viewing Parties and Invited User Parties", :vcr do
+      danny = User.create!(name: "Danny DeVito", username: "danny_de_v", password: "jerseyMikesRox7")
+      dolly = User.create!(name: "Dolly Parton", username: "dollyP", password: "Jolene123")
+      lionel = User.create!(name: "Lionel Messi", username: "futbol_geek", password: "test123")
+      matt = User.create!(name: "Matt Haefling", username: "mhaefling", password: "banana")
+      jono = User.create!(name: "Jono Sommers", username: "jsommers", password: "pizza")
+      natasha = User.create!(name: "Natasha", username: "natashaunwell", password: "sickasadog")
+      joe = User.create!(name: "Joe Haefling", username: "jhaefling", password: "wutang")
+
+      party_one_invitees = [joe.id, jono.id]
+      party_two_invitees = [matt.id, danny.id]
+
+      party_one = {
+        name: "Matts Lord of the rings party",
+        start_time: "2025-02-01 10:00:00",
+        end_time: "2025-02-01 14:30:00",
+        movie_id: 120,
+        movie_title: "The Lord of the Rings: The Fellowship of the Ring",
+        invitees: party_one_invitees
+      }
+
+      party_two = {
+        name: "Joes Wu-Tang for life party",
+        start_time: "2025-02-01 10:00:00",
+        end_time: "2025-02-01 14:30:00",
+        movie_id: 96340,
+        movie_title: "Wu: The Story of the Wu-Tang Clan",
+        invitees: party_two_invitees
+      }
+
+      post "/api/v1/users/#{matt.id}/viewing_parties/", params: party_one, as: :json
+      post "/api/v1/users/#{joe.id}/viewing_parties/", params: party_two, as: :json
+
+      get "/api/v1/users/#{matt.id}"
+      expect(response).to be_successful
+
+      user_profile = JSON.parse(response.body, symbolize_names: true)[:data]
+      
+      expect(user_profile).to have_key :id
+      expect(user_profile[:id]).to be_an(String)
+      expect(user_profile[:id]).to eq(matt.id.to_s)
+
+      expect(user_profile).to have_key :type
+      expect(user_profile[:type]).to be_an(String)
+      expect(user_profile[:type]).to eq("user")
+
+      expect(user_profile).to have_key :attributes
+      expect(user_profile[:attributes]).to be_an(Hash)
+      expect(user_profile[:attributes]).to have_key :name
+      expect(user_profile[:attributes][:name]).to be_an(String)
+      expect(user_profile[:attributes][:name]).to eq("Matt Haefling")
+      expect(user_profile[:attributes]).to have_key :username
+      expect(user_profile[:attributes][:username]).to be_an(String)
+      expect(user_profile[:attributes][:username]).to eq("mhaefling")
+      
+      expect(user_profile[:attributes]).to have_key :viewing_parties_hosted
+      expect(user_profile[:attributes][:viewing_parties_hosted]).to be_an(Array)
+      
+      expect(user_profile[:attributes]).to have_key :viewing_parties_invited
+      expect(user_profile[:attributes][:viewing_parties_invited]).to be_an(Array)
     end
   end
 end

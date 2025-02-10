@@ -7,14 +7,6 @@ class User < ApplicationRecord
   has_many :user_viewings
   has_many :viewing_parties, through: :user_viewings
 
-#   attr_reader :viewing_parties_hosted,
-#               :viewing_parties_invited
-
-# def initialize(user)
-#   @viewing_parties_hosted = viewing_parties.where(host: true)
-#   @viewing_parties_invited = viewing_parties.where(host: false)
-# end
-
   def self.validate_invitees(invitees)
     valid_invitees = [] 
     invitees.each do |invitee|

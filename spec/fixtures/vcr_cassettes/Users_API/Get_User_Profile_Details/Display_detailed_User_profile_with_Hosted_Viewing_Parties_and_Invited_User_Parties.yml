@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/120
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<THEMOVIEDB_KEY>"
+      User-Agent:
+      - Faraday v2.10.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 10 Feb 2025 18:02:10 GMT
+      Server:
+      - openresty
+      Cache-Control:
+      - public, max-age=20943
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - c08d8c0e8db4f65ba68fda321b06ca46
+      X-Memc-Age:
+      - '4853'
+      X-Memc-Expires:
+      - '20943'
+      Etag:
+      - W/"21dcecdea3324f9b5b0e28644c35578c"
+      Vary:
+      - Accept-Encoding,accept-encoding
+      - Origin
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 1c13683c7de319f25e08f83861fc6dc2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN52-P2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - QHYNMPCFt5A2vTnZo-L8pMhZd2Uv_arwURq3PnU85xP_TCp2UCy4xw==
+      Age:
+      - '4659'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"adult":false,"backdrop_path":"/x2RS3uTcsJJ9IfjNPcgDmukoEcQ.jpg","belongs_to_collection":{"id":119,"name":"The
+        Lord of the Rings Collection","poster_path":"/qMPLMnGirZpl7LKliFU1iNIrrDo.jpg","backdrop_path":"/bccR2CGTWVVSZAG0yqmy3DIvhTX.jpg"},"budget":93000000,"genres":[{"id":12,"name":"Adventure"},{"id":14,"name":"Fantasy"},{"id":28,"name":"Action"}],"homepage":"http://www.lordoftherings.net/","id":120,"imdb_id":"tt0120737","origin_country":["US"],"original_language":"en","original_title":"The
+        Lord of the Rings: The Fellowship of the Ring","overview":"Young hobbit Frodo
+        Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave
+        his home in order to keep it from falling into the hands of its evil creator.
+        Along the way, a fellowship is formed to protect the ringbearer and make sure
+        that the ring arrives at its final destination: Mt. Doom, the only place where
+        it can be destroyed.","popularity":177.07,"poster_path":"/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg","production_companies":[{"id":12,"logo_path":"/2ycs64eqV5rqKYHyQK0GVoKGvfX.png","name":"New
+        Line Cinema","origin_country":"US"},{"id":11,"logo_path":"/6FAuASQHybRkZUk08p9PzSs9ezM.png","name":"WingNut
+        Films","origin_country":"NZ"},{"id":5237,"logo_path":"/mlnr7vsBHvLye8oEb5A76C0t8x9.png","name":"The
+        Saul Zaentz Company","origin_country":"US"}],"production_countries":[{"iso_3166_1":"NZ","name":"New
+        Zealand"},{"iso_3166_1":"US","name":"United States of America"}],"release_date":"2001-12-18","revenue":871368364,"runtime":179,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"One
+        ring to rule them all.","title":"The Lord of the Rings: The Fellowship of
+        the Ring","video":false,"vote_average":8.4,"vote_count":25570}'
+  recorded_at: Mon, 10 Feb 2025 19:19:49 GMT
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/96340
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<THEMOVIEDB_KEY>"
+      User-Agent:
+      - Faraday v2.10.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 10 Feb 2025 18:10:13 GMT
+      Server:
+      - openresty
+      Cache-Control:
+      - public, max-age=22232
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - f26007967c0d210973fc7fe0623a6470
+      X-Memc-Age:
+      - '1546'
+      X-Memc-Expires:
+      - '22232'
+      Etag:
+      - W/"49fb9ba41ce6a6adbf4304b8ea055ee1"
+      Vary:
+      - Accept-Encoding,accept-encoding
+      - Origin
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 badefad2d1fb92bb4620df1ce11d8c92.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN52-P2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - DC61KIAkzXOwHqw-Q5Q1gC_b4TbKLF1x_FlWx3i4u6Ejtmln5YQ7Xw==
+      Age:
+      - '4176'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"adult":false,"backdrop_path":null,"belongs_to_collection":null,"budget":0,"genres":[{"id":99,"name":"Documentary"},{"id":10402,"name":"Music"}],"homepage":"","id":96340,"imdb_id":"tt0950779","origin_country":["US"],"original_language":"en","original_title":"Wu:
+        The Story of the Wu-Tang Clan","overview":"In the summer of 1993, the Wu-Tang
+        Clan emerged from the slums of Staten Island, NY and took the hip-hop world
+        by storm. Their legacy spanned over a decade, selling more than 20 million
+        albums. Their talents brought them success and their music made them legends.
+        This is their story...\"WU: The Story of the Wu-Tang Clan\" is an inspiring
+        tale of the Clan''s rise to power, fall from greatness and phoenix-like rebirth.
+        This gem of a documentary includes a spectacular presentation of never before
+        seen rare concert footage and interviews intimately narrated by acclaimed,
+        Gerald \"Gee-Bee\" Barclay.","popularity":1.576,"poster_path":"/ixQTHYc7SJL83A2axfmdbkU5DtP.jpg","production_companies":[{"id":11964,"logo_path":null,"name":"BET
+        TV","origin_country":""},{"id":12107,"logo_path":"/g7GATl5QBnBnoNk2dEb6D8SV7gN.png","name":"Gee-Bee
+        Productions","origin_country":"US"},{"id":12108,"logo_path":null,"name":"RFILM
+        Ltd.","origin_country":""},{"id":4,"logo_path":"/gz66EfNoYPqHTYI4q9UEN4CbHRc.png","name":"Paramount
+        Pictures","origin_country":"US"}],"production_countries":[{"iso_3166_1":"US","name":"United
+        States of America"}],"release_date":"2008-11-08","revenue":0,"runtime":79,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"","title":"Wu:
+        The Story of the Wu-Tang Clan","video":false,"vote_average":6.3,"vote_count":10}'
+  recorded_at: Mon, 10 Feb 2025 19:19:49 GMT
+recorded_with: VCR 6.3.1
