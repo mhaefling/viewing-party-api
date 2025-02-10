@@ -13,11 +13,46 @@ class MovieGateway
   end
 
   def self.search_votes(average)
-    conn.get("https://api.themoviedb.org/3/discover/movie?vote_average.gte=#{average}")
+    conn.get("/3/discover/movie?vote_average.gte=#{average}")
   end
 
   def self.movie_run_time(movie_id)
-    JSON.parse(conn.get("https://api.themoviedb.org/3/movie/#{movie_id}").body, symbolize_names: true)[:runtime]
+    JSON.parse(conn.get("/3/movie/#{movie_id}").body, symbolize_names: true)[:runtime]
+  end
+
+  def self.get_movie_details(movie_id)
+    general = get_general_data(movie_id)
+    crew = get_crew_data(movie_id)
+    review = get_review_data(movie_id)
+    create_detailed_movie_structure(general, crew, review)
+  end
+
+  def self.get_general_data(movie_id)
+    JSON.parse(conn.get("/3/movie/#{movie_id}").body, symbolize_names: true)
+  end
+
+  def self.get_crew_data(movie_id)
+    JSON.parse(conn.get("3/movie/#{movie_id}/credits").body, symbolize_names: true)
+  end
+  
+  def self.get_review_data(movie_id)
+    JSON.parse(conn.get("3/movie/#{movie_id}/reviews").body, symbolize_names: true)
+  end
+
+  def self.create_detailed_movie_structure(general, crew, review)
+    movie = {
+      id: general[:id],
+      original_title: general[:original_title],
+      release_date: general[:release_date],
+      vote_average: general[:vote_average],
+      runtime: general[:runtime],
+      genres: general[:genres],
+      overview: general[:overview],
+      cast: crew[:cast],
+      total_reviews: review[:total_results],
+      reviews: review[:results]
+    }
+    Movie.new(movie)
   end
 
   private
@@ -50,6 +85,7 @@ class MovieGateway
 
   def self.create_movie_poro(movies)
     movies.map do |movie|
+      binding.pry
       Movie.new(movie)
     end
   end
