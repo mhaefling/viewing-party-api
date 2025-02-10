@@ -85,7 +85,6 @@ class MovieGateway
 
   def self.create_movie_poro(movies)
     movies.map do |movie|
-      binding.pry
       Movie.new(movie)
     end
   end
